@@ -13,7 +13,7 @@ class AuthorPostList: UITableViewController {
     let cellIdentifier = "POSTAUTOR"
     
     var model: [Any] = []
-    let client = MSClient(applicationURLString: "https://boot4camplab.azurewebsites.net")
+    let client = MSClient(applicationURLString: kAppServiceEndpoint)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,32 +28,41 @@ class AuthorPostList: UITableViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-//        client.login(withProvider: "Facebook", controller: self, animated: true) { (
-//            user, error) in
+
+        client.login(withProvider: "google", urlScheme: "boot4final", controller: self, animated: true) { (user, error) in
+            if let _ = error {
+                print("\(String(describing: error?.localizedDescription))")
+                return
+            } else {
+                DispatchQueue.main.async {
+                    self.title = user?.userId
+                    self.pullModell()
+                }
+                print("\(String(describing: user?.userId!))")
+                
+            }
+            
+        }
+//        client.login(withProvider: "facebook",
+//                     urlScheme: "practicaboot4",
+//                     controller: self,
+//                     animated: true) { (user, error) in
 //            if let _ = error {
-//                print("\(error?.localizedDescription)")
+//                print("\(String(describing: error?.localizedDescription))")
 //                return
 //            } else {
+//                DispatchQueue.main.async {
+//                    self.title = user?.userId
+//                    self.pullModell()
+//                }
+//                print("\(String(describing: user?.userId!))")
 //                
-//                print("\(user?.userId)")
-//            }
-//            
-//        }
-        
-//        client.login(withProvider: "Facebook", urlScheme: "", controller: self, animated: true) { (user, error) in
-//            if let _ = error {
-//                print("\(error?.localizedDescription)")
-//                return
-//            } else {
-////                guard user { return }
-//                
-//                print("\(user?.userId)")
 //            }
 //        }
     }
     
     func hadleRefresh(_ refreshControl: UIRefreshControl) {
+        pullModell()
         refreshControl.endRefreshing()
     }
     
@@ -65,23 +74,23 @@ class AuthorPostList: UITableViewController {
     // MARK: Popular el model desde Azure
     
     func pullModell()  {
-        
-        
-        client.invokeAPI("GetAllMyPosts",
-                         body: nil,
-                         httpMethod: "GET",
-                         parameters: nil,
-                         headers: nil) {
-                            (result, response, error) in
-                            if let _ = error {
-                                print("\(error?.localizedDescription)")
-                            }
-                            print("\(result)")
-                            self.model = result as! [Any]
-                            DispatchQueue.main.async {
-                                self.tableView.reloadData()
-                            }
-                            
+        if let _ = client.currentUser {
+        print("\(#function)")
+            client.invokeAPI("GetAllMyPosts",
+                             body: nil,
+                             httpMethod: "GET",
+                             parameters: nil,
+                             headers: nil) {
+                                (result, response, error) in
+                                if let _ = error {
+                                    print("\(String(describing: error?.localizedDescription))")
+                                }
+                                self.model = result as! [Any]
+                                DispatchQueue.main.async {
+                                    self.tableView.reloadData()
+                                }
+                                
+            }
         }
         
     }
@@ -115,7 +124,7 @@ class AuthorPostList: UITableViewController {
     
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         
-        let publish = UITableViewRowAction(style: .normal, title: "Publicar") { (action, indexPath) in
+        let publish = UITableViewRowAction(style: .destructive, title: "Publicar") { (action, indexPath) in
             // Codigo para publicar el post
             let item = self.model[indexPath.row] as? Dictionary<String, Any>
             
@@ -128,11 +137,10 @@ class AuthorPostList: UITableViewController {
                              headers: nil) {
                                 (result, response, error) in
                                 if let _ = error {
-                                    print("\(error?.localizedDescription)")
-                                    return
+                                    print("\(String(describing: error?.localizedDescription))")
                                 }
+
                                 self.pullModell()
-            
             }
 
             

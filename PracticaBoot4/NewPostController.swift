@@ -134,10 +134,10 @@ extension NewPostController {
             
             let blobBlock = container?.blockBlobReference(fromName: String("\(UUID().uuidString).jpg"))
             blobBlock?.upload(from: data, completionHandler: { (error) in
-                if error == nil {
-                    completionHandler(blobBlock?.blobName)
-                } else {
+                if let _ = error {
                     completionHandler(nil)
+                } else {
+                    completionHandler(blobBlock?.blobName)
                 }
             })
             
@@ -153,18 +153,18 @@ extension NewPostController {
         posts.insert(["title": title, "postDescription" : description, "status" : status]) {
             (result, error) in
             if let _ = error {
-                print("\(error)")
+                print("\(String(describing: error))")
                 return
             }
             if let _ = imgData {
                 self.uploadDataPost(data: imgData, completionHandler: { (blobname) in
                     
                     let item = ["id" : (result?["id"] as! String), "photo" : blobname]
-                    posts.update(item, completion: { (result, error) in
+                    posts.update((item as NSDictionary) as! [AnyHashable : Any], completion: { (result, error) in
                         if let _ = error {
-                            print("Error ---> \(error?.localizedDescription)")
+                            print("Error ---> \(String(describing: error?.localizedDescription))")
                         }
-                        print("\(result)")
+                        print("\(result!)")
                     })
                 })
             }

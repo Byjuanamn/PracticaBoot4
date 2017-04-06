@@ -67,7 +67,7 @@ class MainTimeLine: UITableViewController {
 // MARK: - Rellenar model
     
     func pullModell()  {
-        let client = MSClient(applicationURLString: "https://boot4camplab.azurewebsites.net")
+        let client = MSClient(applicationURLString: kAppServiceEndpoint)
         
         client.invokeAPI("GetAllPublishPosts",
                          body: nil,
@@ -76,9 +76,10 @@ class MainTimeLine: UITableViewController {
                          headers: nil) {
                             (result, response, error) in
                             if let _ = error {
-                                print("\(error?.localizedDescription)")
+                                print("\(String(describing: error?.localizedDescription))")
+                                return
                             }
-                            print("\(result)")
+                            print("\(result.debugDescription)")
                             self.model = result as! [Any]
                             DispatchQueue.main.async {
                                 self.tableView.reloadData()

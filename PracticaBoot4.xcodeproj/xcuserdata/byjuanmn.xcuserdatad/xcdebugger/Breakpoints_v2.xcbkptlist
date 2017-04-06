@@ -42,109 +42,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PracticaBoot4/AuthorPostList.swift"
-            timestampString = "512342297.208304"
+            timestampString = "513111807.839292"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "122"
-            endingLineNumber = "122"
-            landmarkName = "tableView(_:editActionsForRowAt:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "PracticaBoot4.AuthorPostList.(tableView (__ObjC.UITableView, editActionsForRowAt : Foundation.IndexPath) -&gt; Swift.Optional&lt;Swift.Array&lt;__ObjC.UITableViewRowAction&gt;&gt;).(closure #1)"
-                  moduleName = "PracticaBoot4"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/byjuanmn/CloudStation/Formacio%CC%81n/Boot%204/Azure/Show%20me%20the%20code/Teacher/Boot4/PracticaBoot4/PracticaBoot4/AuthorPostList.swift"
-                  timestampString = "512342786.037897"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "122"
-                  endingLineNumber = "122"
-                  offsetFromSymbolStart = "305">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "PracticaBoot4.AuthorPostList.(tableView (__ObjC.UITableView, editActionsForRowAt : Foundation.IndexPath) -&gt; Swift.Optional&lt;Swift.Array&lt;__ObjC.UITableViewRowAction&gt;&gt;).(closure #1)"
-                  moduleName = "PracticaBoot4"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/byjuanmn/CloudStation/Formacio%CC%81n/Boot%204/Azure/Show%20me%20the%20code/Teacher/Boot4/PracticaBoot4/PracticaBoot4/AuthorPostList.swift"
-                  timestampString = "512342786.039955"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "122"
-                  endingLineNumber = "122"
-                  offsetFromSymbolStart = "2858">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PracticaBoot4/AuthorPostList.swift"
-            timestampString = "512342297.208304"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "130"
-            endingLineNumber = "130"
-            landmarkName = "tableView(_:editActionsForRowAt:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PracticaBoot4/AuthorPostList.swift"
-            timestampString = "512342286.314633"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "32"
-            endingLineNumber = "32"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
             landmarkName = "viewWillAppear(_:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "PracticaBoot4.AuthorPostList.viewWillAppear (Swift.Bool) -&gt; ()"
-                  moduleName = "PracticaBoot4"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/byjuanmn/CloudStation/Formacio%CC%81n/Boot%204/Azure/Show%20me%20the%20code/Teacher/Boot4/PracticaBoot4/PracticaBoot4/AuthorPostList.swift"
-                  timestampString = "512342786.069131"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "32"
-                  endingLineNumber = "32"
-                  offsetFromSymbolStart = "90">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "PracticaBoot4.AuthorPostList.(viewWillAppear (Swift.Bool) -&gt; ()).(closure #1)"
-                  moduleName = "PracticaBoot4"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/byjuanmn/CloudStation/Formacio%CC%81n/Boot%204/Azure/Show%20me%20the%20code/Teacher/Boot4/PracticaBoot4/PracticaBoot4/AuthorPostList.swift"
-                  timestampString = "512342786.071363"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "34"
-                  endingLineNumber = "34"
-                  offsetFromSymbolStart = "19">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -153,13 +57,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PracticaBoot4/AuthorPostList.swift"
-            timestampString = "512342287.686545"
+            filePath = "PracticaBoot4/AppDelegate.swift"
+            timestampString = "513174796.861198"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "34"
-            endingLineNumber = "34"
-            landmarkName = "viewWillAppear(_:)"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
+            landmarkName = "application(_:didReceiveRemoteNotification:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PracticaBoot4/AppDelegate.swift"
+            timestampString = "513174899.983126"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
+            landmarkName = "application(_:didRegisterForRemoteNotificationsWithDeviceToken:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

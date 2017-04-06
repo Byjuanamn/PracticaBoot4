@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,24 +18,53 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-//        let client = MSClient(applicationURLString: "https://boot4camplab.azurewebsites.net")
-//        
-//        client.invokeAPI("GetAllPublishPosts",
-//                         body: nil,
-//                         httpMethod: "GET",
-//                         parameters: nil,
-//                         headers: nil) {
-//                            (result, response, error) in
-//                            if let _ = error {
-//                                print("\(error?.localizedDescription)")
-//                            }
-//                            print("\(result)")
-//            
-//        }
+        registerForRemoteNotifications(app: application)
+ 
+        
         return true
     }
+    
+    func registerForRemoteNotifications(app: UIApplication) {
+        
+        // iOS 10 
+        if #available(iOS 10, *) {
+            UNUserNotificationCenter
+            .current()
+            .requestAuthorization(options: [.alert, .sound, .badge], completionHandler: { (supported, error) in
+            })
+            app.registerForRemoteNotifications()
+        } else if #available(iOS 9, *) {
+            UIApplication
+                .shared
+                .registerUserNotificationSettings(UIUserNotificationSettings(types: [.badge, .alert, .sound],
+                                                                             categories: nil))
+            UIApplication
+            .shared
+            .registerForRemoteNotifications()
+        }
+    }
+    
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        let client = ClientPushManager.sharedClient
 
-    func applicationWillResignActive(_ application: UIApplication) {
+        client.push?.registerDeviceToken(deviceToken, completion: { (error) in
+            if let _ = error {
+                print(error!)
+            }
+        })
+    }
+    
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        print(error)
+    }
+    
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
+        
+        print(userInfo)
+    }
+    
+    
+     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
     }
@@ -55,7 +85,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        if url.scheme?.lowercased() == "boot4final" {
+            print("OK")
+        }
+        
+        return true
+    }
 
 }
+
+class ClientPushManager {
+    static let sharedClient = MSClient(applicationURLString: kAppServiceEndpoint)
+}
+
+
+
+
+
 
