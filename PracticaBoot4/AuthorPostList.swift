@@ -26,7 +26,7 @@ class AuthorPostList: UITableViewController {
         self.refreshControl?.addTarget(self, action: #selector(hadleRefresh(_:)), for: UIControlEvents.valueChanged)
     }
     
-    func hadleRefresh(_ refreshControl: UIRefreshControl) {
+    @objc func hadleRefresh(_ refreshControl: UIRefreshControl) {
         refreshControl.endRefreshing()
     }
     

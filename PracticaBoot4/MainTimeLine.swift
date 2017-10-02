@@ -24,7 +24,7 @@ class MainTimeLine: UITableViewController {
         self.refreshControl?.addTarget(self, action: #selector(hadleRefresh(_:)), for: UIControlEvents.valueChanged)
     }
     
-    func hadleRefresh(_ refreshControl: UIRefreshControl) {
+    @objc func hadleRefresh(_ refreshControl: UIRefreshControl) {
         refreshControl.endRefreshing()
     }
     override func didReceiveMemoryWarning() {
@@ -65,7 +65,7 @@ class MainTimeLine: UITableViewController {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         if segue.identifier == "ShowRatingPost" {
-            let vc = segue.destination as! PostReview
+            _ = segue.destination as! PostReview
             // aqui pasamos el item selecionado
         }
     }
